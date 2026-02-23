@@ -25,7 +25,7 @@ The config file path is:
 src/arxiv_papers/openai_config.json
 ```
 
-## Recommended: Use an Environment Variable (More Secure)
+## Use an Environment Variable
 
 This avoids storing your API key in the repository.
 
@@ -49,9 +49,6 @@ Example:
 }
 ```
 
-
-## Optional Configuration Fields
-
 You may optionally include:
 
 ```json
@@ -61,28 +58,4 @@ You may optionally include:
   "organization": "org_XXXXXXXX",
   "project": "proj_XXXXXXXX"
 }
-```
-
-### When to use these:
-
-- **base_url**  
-  Only required if using:
-  - Azure OpenAI
-  - A proxy
-  - A custom API gateway
-
-- **organization**  
-  Needed only if your account belongs to multiple organizations.
-
-- **project**  
-  Optional. Useful for usage tracking under OpenAI Projects.
-
-## Security Recommendation
-
-**Never commit your API key to version control.**
-
-Add this to `.gitignore`:
-
-```
-src/arxiv_papers/openai_config.json
 ```
