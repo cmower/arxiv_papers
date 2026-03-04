@@ -10,10 +10,11 @@ from openai import OpenAI
 from arxiv_papers.list_papers import ArxivPaper
 
 
-class Importance(str, Enum):
+class Importance(Enum):
     DEFINITELY_READ = "DEFINITELY_READ"  # critical to your work / directly aligned
     GOOD_TO_READ = "GOOD_TO_READ"  # useful but not urgent (surveys, adjacent methods)
     INTEREST = "INTEREST"  # personally interesting / tangential
+    SKIM = "SKIM"  # not a priority, but worth a quick look
 
 
 @dataclass(frozen=True)
@@ -65,7 +66,7 @@ def filter_papers(
                             "arxiv_id": {"type": "string"},
                             "importance": {
                                 "type": "string",
-                                "enum": ["DEFINITELY_READ", "GOOD_TO_READ", "INTEREST"],
+                                "enum": list(Importance._value2member_map_.keys()),
                             },
                             "explanation": {"type": "string"},
                         },
