@@ -126,13 +126,4 @@ def filter_papers(
         if request_delay_s > 0:
             time.sleep(request_delay_s)
 
-    # Sort: best-first
-    rank = {
-        Importance.DEFINITELY_READ: 0,
-        Importance.GOOD_TO_READ: 1,
-        Importance.INTEREST: 2,
-    }
-    out.sort(
-        key=lambda x: (rank[x.importance], x.paper.year, x.paper.month, x.paper.day)
-    )
     return out
